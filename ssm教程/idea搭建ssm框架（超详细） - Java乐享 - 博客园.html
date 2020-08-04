@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://www.cnblogs.com/xinyijiu/p/10920993.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin">
+    <meta property="og:description" content="一。创建项目 先附上测试的数据库 1.new-&amp;gt;project出现如下 点击next后出现如下填写GroupId和ArtifactId在点击next直至finish 2.构建目录结构 在main">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>idea搭建ssm框架（超详细） - Java乐享 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.ico?v=20200522" type="image/x-icon">
+    
+    <link rel="stylesheet" href="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/bundle-anothereon001.min.css">
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/bundle-anothereon001-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/xinyijiu/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/xinyijiu/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/xinyijiu/wlwmanifest.xml">
+    <script async="" src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/analytics.js.下载"></script><script type="text/javascript" src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/encoder.js.下载"></script><script>
+        var currentBlogId = 514195;
+        var currentBlogApp = 'xinyijiu';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'AnotherEon001';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2019-05-27 08:33';
+        </script>
+    <script src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/blog-common.min.js.下载"></script>
+    
+    
+    
+</head>
+<body>
+    <a name="top"></a>
+    
+    <div id="wrapper">
+<div id="header">
+
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/xinyijiu/">心依旧丶</a>
+</h1>
+<div id="subtitle">
+
+</div>
+</div>
+<div id="sub"><div class="BlogStats">随笔 - 
+6, 文章 - 
+0, 评论 - 
+3, 引用 - 
+0</div>
+
+</div>
+
+
+
+
+</div>
+<div id="main_container">
+<div id="main_content">
+<div id="content">
+	<div id="post_detail">
+    <div class="post">
+        <h2>
+            
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/xinyijiu/p/10920993.html">
+    <span>idea搭建ssm框架（超详细）</span>
+    
+
+
+</a>
+
+        </h2>
+        <div class="postbody">
+            
+<div id="cnblogs_post_body" class="blogpost-body">
+    <p>一。创建项目</p>
+<p>先附上测试的数据库</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #000000;">DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` </span><span style="color: #0000ff;">int</span>(5<span style="color: #000000;">) NOT NULL AUTO_INCREMENT,
+  `name` varchar(</span>10<span style="color: #000000;">) COLLATE utf8_bin DEFAULT NULL,
+  `password` varchar(</span>10<span style="color: #000000;">) COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(</span>50<span style="color: #000000;">) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE</span>=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=<span style="color: #000000;">utf8_bin;
+
+</span>-- ----------------------------
+--<span style="color: #000000;"> Records of user
+</span>-- ----------------------------<span style="color: #000000;">
+INSERT INTO `user` VALUES (</span>'1', 'zhangsan', '123456', <span style="color: #0000ff;">null</span><span style="color: #000000;">);
+INSERT INTO `user` VALUES (</span>'2', 'lisi', '123', <span style="color: #0000ff;">null</span><span style="color: #000000;">);
+INSERT INTO `user` VALUES (</span>'3', 'wangan', '456', <span style="color: #0000ff;">null</span><span style="color: #000000;">);
+INSERT INTO `user` VALUES (</span>'4', 'xinxi', '000', <span style="color: #0000ff;">null</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>1.new-&gt;project出现如下</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190522183038072-534550036.png" alt="" width="452" height="281"></p>
+<p>点击next后出现如下填写GroupId和ArtifactId在点击next直至finish</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190524234826599-471945998.png" alt="" width="448" height="324"></p>
+<p>2.构建目录结构</p>
+<p>在main下新建java和resources目录如下并将java目录标记为Sources Root，resources标记为Resources Root</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190522184449475-1947943982.png" alt="" width="452" height="109"></p>
+<p>&nbsp;</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190522184608164-900872960.png" alt="" width="450" height="319"></p>
+<p>在java下新建如下包package</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190524235311868-1976705195.png" alt=""></p>
+<p>二。Spring MVC</p>
+<p>1.首先引入Spring MVC依赖</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div><pre>&lt;!-- Spring相关包 --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;</pre><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>并添加&lt;properties&gt;&lt;spring.version&gt;4.3.8.RELEASE&lt;/spring.version&gt;&lt;/properties&gt;</p>
+<p>2.在controller新建TestController类，在WEB-INF下新建static目录，还在WEB-INF下新建jsp目录并新建test.jsp页面</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190525000930854-990238857.png" alt="" width="462" height="252"></p>
+<p>&nbsp;</p>
+<p>3.在web.xml添加dispatcherServlet</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div><pre>&lt;?xml version=<span style="color: #800000;">"</span><span style="color: #800000;">1.0</span><span style="color: #800000;">"</span> encoding=<span style="color: #800000;">"</span><span style="color: #800000;">UTF-8</span><span style="color: #800000;">"</span>?&gt;
+&lt;web-app xmlns:xsi=<span style="color: #800000;">"</span><span style="color: #800000;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #800000;">"</span><span style="color: #000000;">
+         xmlns</span>=<span style="color: #800000;">"</span><span style="color: #800000;">http://java.sun.com/xml/ns/javaee</span><span style="color: #800000;">"</span><span style="color: #000000;">
+         xsi:schemaLocation</span>=<span style="color: #800000;">"</span><span style="color: #800000;">http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd</span><span style="color: #800000;">"</span><span style="color: #000000;">
+         id</span>=<span style="color: #800000;">"</span><span style="color: #800000;">WebApp_ID</span><span style="color: #800000;">"</span> version=<span style="color: #800000;">"</span><span style="color: #800000;">3.0</span><span style="color: #800000;">"</span>&gt;
+
+  &lt;display-name&gt;SSM2&lt;/display-name&gt;
+  
+
+  &lt;!--<span style="color: #000000;"> 设计路径变量值
+  </span>&lt;context-param&gt;
+      &lt;param-name&gt;webAppRootKey&lt;/param-name&gt;
+      &lt;param-value&gt;springmvc.root&lt;/param-value&gt;
+  &lt;/context-param&gt;
+  --&gt;
+
+  &lt;!-- Spring字符集过滤器 --&gt;
+  &lt;filter&gt;
+    &lt;filter-name&gt;SpringEncodingFilter&lt;/filter-name&gt;
+    &lt;filter-<span style="color: #0000ff;">class</span>&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-<span style="color: #0000ff;">class</span>&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;encoding&lt;/param-name&gt;
+      &lt;param-value&gt;UTF-<span style="color: #800080;">8</span>&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;forceEncoding&lt;/param-name&gt;
+      &lt;param-value&gt;<span style="color: #0000ff;">true</span>&lt;/param-value&gt;
+    &lt;/init-param&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;SpringEncodingFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;<span style="color: #008000;">/*</span><span style="color: #008000;">&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+
+
+
+  &lt;!-- springMVC核心配置 --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+      &lt;!--spingMVC的配置路径   如果是classspath：资源是在resources下面--&gt;
+      &lt;param-value&gt;/WEB-INF/spring-mvc.xml&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+  &lt;!-- 拦截设置 --&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+
+  &lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+  &lt;/welcome-file-list&gt;
+&lt;/web-app&gt;</span></pre><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>4.在WEB-INF下新建spring-mvc.xml</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div><pre>&lt;?xml version=<span style="color: #800000;">"</span><span style="color: #800000;">1.0</span><span style="color: #800000;">"</span> encoding=<span style="color: #800000;">"</span><span style="color: #800000;">UTF-8</span><span style="color: #800000;">"</span>?&gt;
+&lt;beans xmlns=<span style="color: #800000;">"</span><span style="color: #800000;">http://www.springframework.org/schema/beans</span><span style="color: #800000;">"</span><span style="color: #000000;">
+       xmlns:p</span>=<span style="color: #800000;">"</span><span style="color: #800000;">http://www.springframework.org/schema/p</span><span style="color: #800000;">"</span><span style="color: #000000;">
+       xmlns:xsi</span>=<span style="color: #800000;">"</span><span style="color: #800000;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #800000;">"</span><span style="color: #000000;">
+       xmlns:context</span>=<span style="color: #800000;">"</span><span style="color: #800000;">http://www.springframework.org/schema/context</span><span style="color: #800000;">"</span><span style="color: #000000;">
+       xmlns:mvc</span>=<span style="color: #800000;">"</span><span style="color: #800000;">http://www.springframework.org/schema/mvc</span><span style="color: #800000;">"</span><span style="color: #000000;">
+       xsi:schemaLocation</span>=<span style="color: #800000;">"
+</span>    http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/beans</span>
+    http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/beans/spring-beans-3.2.xsd</span>
+    http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/context</span>
+    http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/context/spring-context-3.2.xsd</span>
+    http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/mvc</span>
+    http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"&gt;</span>
+
+    &lt;!-- 扫描controller（controller层注入） --&gt;
+    &lt;context:component-scan <span style="color: #0000ff;">base</span>-package=<span style="color: #800000;">"</span><span style="color: #800000;">com.exp.controller</span><span style="color: #800000;">"</span> use-<span style="color: #0000ff;">default</span>-filters=<span style="color: #800000;">"</span><span style="color: #800000;">false</span><span style="color: #800000;">"</span>&gt;
+        &lt;context:include-filter type=<span style="color: #800000;">"</span><span style="color: #800000;">annotation</span><span style="color: #800000;">"</span> expression=<span style="color: #800000;">"</span><span style="color: #800000;">org.springframework.stereotype.Controller</span><span style="color: #800000;">"</span>/&gt;
+
+    &lt;/context:component-scan&gt;
+
+    &lt;mvc:annotation-driven /&gt;
+
+    &lt;!-- 内容协商管理器  --&gt;
+    &lt;!--<span style="color: #800080;">1</span>、首先检查路径扩展名（如my.pdf）；<span style="color: #800080;">2</span>、其次检查Parameter（如my?format=pdf）；<span style="color: #800080;">3</span>、检查Accept Header--&gt;
+    &lt;bean id=<span style="color: #800000;">"</span><span style="color: #800000;">contentNegotiationManager</span><span style="color: #800000;">"</span> <span style="color: #0000ff;">class</span>=<span style="color: #800000;">"</span><span style="color: #800000;">org.springframework.web.accept.ContentNegotiationManagerFactoryBean</span><span style="color: #800000;">"</span>&gt;
+        &lt;!-- 扩展名至mimeType的映射,即 /user.json =&gt; application/json --&gt;
+        &lt;property name=<span style="color: #800000;">"</span><span style="color: #800000;">favorPathExtension</span><span style="color: #800000;">"</span> value=<span style="color: #800000;">"</span><span style="color: #800000;">true</span><span style="color: #800000;">"</span>/&gt;
+        &lt;!-- 用于开启 /userinfo/<span style="color: #800080;">123</span>?format=json 的支持 --&gt;
+        &lt;property name=<span style="color: #800000;">"</span><span style="color: #800000;">favorParameter</span><span style="color: #800000;">"</span> value=<span style="color: #800000;">"</span><span style="color: #800000;">true</span><span style="color: #800000;">"</span>/&gt;
+        &lt;property name=<span style="color: #800000;">"</span><span style="color: #800000;">parameterName</span><span style="color: #800000;">"</span> value=<span style="color: #800000;">"</span><span style="color: #800000;">format</span><span style="color: #800000;">"</span>/&gt;
+        &lt;!-- 是否忽略Accept Header --&gt;
+        &lt;property name=<span style="color: #800000;">"</span><span style="color: #800000;">ignoreAcceptHeader</span><span style="color: #800000;">"</span> value=<span style="color: #800000;">"</span><span style="color: #800000;">false</span><span style="color: #800000;">"</span>/&gt;
+
+        &lt;property name=<span style="color: #800000;">"</span><span style="color: #800000;">mediaTypes</span><span style="color: #800000;">"</span>&gt; &lt;!--扩展名到MIME的映射；favorPathExtension, favorParameter是true时起作用  --&gt;
+            &lt;value&gt;<span style="color: #000000;">
+                json</span>=application/<span style="color: #000000;">json
+                xml</span>=application/<span style="color: #000000;">xml
+                html</span>=text/<span style="color: #000000;">html
+            </span>&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;!-- 默认的content type --&gt;
+        &lt;property name=<span style="color: #800000;">"</span><span style="color: #800000;">defaultContentType</span><span style="color: #800000;">"</span> value=<span style="color: #800000;">"</span><span style="color: #800000;">text/html</span><span style="color: #800000;">"</span>/&gt;
+    &lt;/bean&gt;
+
+
+    &lt;!-- 当在web.xml 中   DispatcherServlet使用 &lt;url-pattern&gt;/&lt;/url-pattern&gt; 映射时，能映射静态资源 --&gt;
+    &lt;mvc:<span style="color: #0000ff;">default</span>-servlet-handler /&gt;
+    &lt;!-- 静态资源映射 --&gt;
+    &lt;mvc:resources mapping=<span style="color: #800000;">"</span><span style="color: #800000;">/static/**</span><span style="color: #800000;">"</span> location=<span style="color: #800000;">"</span><span style="color: #800000;">/WEB-INF/static/</span><span style="color: #800000;">"</span>/&gt;
+
+
+    &lt;!-- 对模型视图添加前后缀 --&gt;
+    &lt;bean id=<span style="color: #800000;">"</span><span style="color: #800000;">viewResolver</span><span style="color: #800000;">"</span> <span style="color: #0000ff;">class</span>=<span style="color: #800000;">"</span><span style="color: #800000;">org.springframework.web.servlet.view.InternalResourceViewResolver</span><span style="color: #800000;">"</span><span style="color: #000000;">
+          p:prefix</span>=<span style="color: #800000;">"</span><span style="color: #800000;">/WEB-INF/jsp/</span><span style="color: #800000;">"</span> p:suffix=<span style="color: #800000;">"</span><span style="color: #800000;">.jsp</span><span style="color: #800000;">"</span>/&gt;
+
+
+&lt;/beans&gt;</pre><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>5.部署</p>
+<p>点击如下图</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190523194813901-493739287.png" alt="" width="258" height="93"></p>
+<p>点击+号找到Local</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190523194926122-864287233.png" alt="" width="369" height="320"></p>
+<p>接下来修改名字，选择Deployment点击+号，选择ssm2:war exploded,另外Application context填写的如果是ssm2，那么访问的时候就是localhost:8080/ssm2,部署结束。</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190523195203266-1695981955.png" alt="" width="459" height="146"></p>
+<p>6.启动测试</p>
+<p>启动后默认访问的是index.jsp页面，可以访问http://localhost:8080/ssm2/test</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190525001906526-1302472584.png" alt="" width="462" height="118"></p>
+<p>如果页面乱码在头部加上&lt;%@ page language="java" contentType="text/html; charset=UTF-8"&nbsp; pageEncoding="UTF-8"%&gt;</p>
+<p>三。Spring与Mybatis</p>
+<p>1.引入相关依赖</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>&lt;!-- MyBatis相关包 --&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+          &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+          &lt;version&gt;3.3.0&lt;/version&gt;
+      &lt;/dependency&gt;
+      &lt;!-- MySQL相关包 --&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;mysql&lt;/groupId&gt;
+          &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+          &lt;version&gt;5.1.26&lt;/version&gt;
+      &lt;/dependency&gt;
+      &lt;!-- 数据库连接池 --&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+          &lt;artifactId&gt;druid&lt;/artifactId&gt;
+          &lt;version&gt;1.0.20&lt;/version&gt;
+      &lt;/dependency&gt;
+      &lt;!-- https:<span style="color: #008000;">//</span><span style="color: #008000;">mvnrepository.com/artifact/com.alibaba/fastjson --&gt;</span>
+      &lt;dependency&gt;
+          &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+          &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+          &lt;version&gt;1.2.31&lt;/version&gt;
+      &lt;/dependency&gt;
+
+      &lt;!-- Spring集成MyBatis --&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+          &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+          &lt;version&gt;1.2.3&lt;/version&gt;
+      &lt;/dependency&gt;
+
+      &lt;!-- JSP标准标签库 --&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+          &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+          &lt;version&gt;1.2&lt;/version&gt;
+      &lt;/dependency&gt;
+
+      &lt;!-- 日志相关包 --&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;log4j&lt;/groupId&gt;
+          &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+          &lt;version&gt;1.2.17&lt;/version&gt;
+      &lt;/dependency&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+          &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+          &lt;version&gt;1.7.21&lt;/version&gt;
+      &lt;/dependency&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<div>2.生成实体与mybatis配置文件</div>
+<div>在resources下新建generator目录并新建generatorConfig.xml文件</div>
+<div>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!<span style="color: #000000;">DOCTYPE generatorConfiguration
+        PUBLIC </span>"-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"&gt;
+
+&lt;generatorConfiguration&gt;
+    &lt;!--本地的数据库连接驱动地址--&gt;
+    &lt;<span style="color: #000000;">classPathEntry
+            location</span>="D:\OfficeWave\configdata\repository\mysql\mysql-connector-java\5.1.26\mysql-connector-java-5.1.26.jar"/&gt;
+    &lt;context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat"&gt;
+        &lt;property name="beginningDelimiter" value="`"/&gt;
+        &lt;property name="endingDelimiter" value="`"/&gt;
+        &lt;property name="mergeable" value="false"&gt;&lt;/property&gt;
+        &lt;!--数据库连接地址--&gt;
+        &lt;jdbcConnection driverClass="com.mysql.jdbc.Driver"<span style="color: #000000;">
+                        connectionURL</span>="jdbc:mysql://localhost:3306/user"<span style="color: #000000;">
+                        userId</span>="root"<span style="color: #000000;">
+                        password</span>="root"&gt;
+        &lt;/jdbcConnection&gt;
+        &lt;!--生成实体类（注意修改包路径）--&gt;
+        &lt;javaModelGenerator targetPackage="com.exp.model" targetProject="src/main/java"&gt;
+            &lt;property name="enableSubPackages" value="true"/&gt;
+            &lt;property name="trimStrings" value="true"/&gt;
+        &lt;/javaModelGenerator&gt;
+        &lt;!--生成mapper.xml--&gt;
+        &lt;sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"&gt;
+            &lt;property name="enableSubPackages" value="true"/&gt;
+        &lt;/sqlMapGenerator&gt;
+
+        &lt;!--生成mapper.java（注意修改包路径）--&gt;
+        &lt;javaClientGenerator type="XMLMAPPER" targetPackage="com.exp.mapper"<span style="color: #000000;">
+                             targetProject</span>="src/main/java"&gt;
+            &lt;property name="enableSubPackages" value="true"/&gt;
+
+            &lt;!--数据库中的表名称和对应的实体类名称--&gt;
+        &lt;/javaClientGenerator&gt;
+        &lt;table tableName="user" domainObjectName="User"&gt;&lt;/table&gt;
+
+    &lt;/context&gt;
+&lt;/generatorConfiguration&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190527195031776-2134620049.png" alt="" width="964" height="543"></p>
+<p>在pom.xml中的&lt;pluginManagement&gt;标签下添加如下</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>&lt;plugins&gt;
+          &lt;plugin&gt;
+              &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;
+              &lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;
+              &lt;version&gt;1.3.2&lt;/version&gt;
+              &lt;configuration&gt;
+                  &lt;configurationFile&gt;${basedir}/src/main/resources/generator/generatorConfig.xml&lt;/configurationFile&gt;
+                  &lt;overwrite&gt;<span style="color: #0000ff;">true</span>&lt;/overwrite&gt;
+                  &lt;verbose&gt;<span style="color: #0000ff;">true</span>&lt;/verbose&gt;
+              &lt;/configuration&gt;
+          &lt;/plugin&gt;
+      &lt;/plugins&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>双击运行即可</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190527200016539-1627569217.png" alt="" width="405" height="220"></p>
+</div>
+<div>3.web.xml中引入spring相关配置</div>
+<div>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>&lt;!-- 读取spring配置文件 --&gt;
+   &lt;listener&gt;
+           &lt;listener-<span style="color: #0000ff;">class</span>&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-<span style="color: #0000ff;">class</span>&gt;
+      &lt;/listener&gt;
+   &lt;context-param&gt;
+  &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+  &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;
+&lt;/context-param&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>4.在resources下新建applicationContext.xml</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"<span style="color: #000000;">
+       xmlns:xsi</span>="http://www.w3.org/2001/XMLSchema-instance"<span style="color: #000000;">
+       xmlns:context</span>="http://www.springframework.org/schema/context"<span style="color: #000000;">
+       xmlns:aop</span>="http://www.springframework.org/schema/aop"<span style="color: #000000;">
+       xmlns:tx</span>="http://www.springframework.org/schema/tx"<span style="color: #000000;">
+       xsi:schemaLocation</span>="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/context </span><span style="color: #008000; text-decoration: underline;">http://www.springframework.org/schema/context/spring-context-3.0.xsd</span>
+http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/aop </span><span style="color: #008000; text-decoration: underline;">http://www.springframework.org/schema/aop/spring-aop-3.0.xsd</span>
+http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/tx </span><span style="color: #008000; text-decoration: underline;">http://www.springframework.org/schema/tx/spring-tx-3.0.xsd</span>
+"&gt;
+    &lt;!-- 1.配置jdbc文件 --&gt;
+    &lt;bean id="propertyConfigurer" <span style="color: #0000ff;">class</span>="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+        &lt;property name="locations" value="classpath:jdbc.properties"/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 2.扫描的包路径，这里不扫描被@Controller注解的类 --&gt;&lt;!--使用&lt;context:component-scan/&gt; 可以不在配置&lt;context:annotation-config/&gt; --&gt;
+    &lt;context:component-scan base-<span style="color: #0000ff;">package</span>="com.exp"&gt;
+        &lt;context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/&gt;
+    &lt;/context:component-scan&gt;
+
+    &lt;<span style="color: #0000ff;">import</span> resource="classpath:spring-mybatis.xml" /&gt;
+
+&lt;/beans&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>5.在resources下新建jdbc.properties文件和spring-mybatis.xml</p>
+<p>jdbc.properties</p>
+<div class="cnblogs_code">
+<pre>jdbc_driverClassName =<span style="color: #000000;">com.mysql.jdbc.Driver
+jdbc_url</span>=jdbc:mysql:<span style="color: #008000;">//</span><span style="color: #008000;">localhost:3306/user?useUnicode=true&amp;characterEncoding=utf8</span>
+jdbc_username=<span style="color: #000000;">root
+jdbc_password</span>=root</pre>
+</div>
+<p>spring-mybatis.xml</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"<span style="color: #000000;">
+       xmlns:xsi</span>="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"<span style="color: #000000;">
+       xmlns:tx</span>="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"<span style="color: #000000;">
+       xsi:schemaLocation</span>="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+   http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/aop </span><span style="color: #008000; text-decoration: underline;">http://www.springframework.org/schema/aop/spring-aop-3.2.xsd</span>
+   http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/tx </span><span style="color: #008000; text-decoration: underline;">http://www.springframework.org/schema/tx/spring-tx-3.2.xsd</span>
+   http:<span style="color: #008000;">//</span><span style="color: #008000;">www.springframework.org/schema/context </span><span style="color: #008000; text-decoration: underline;">http://www.springframework.org/schema/context/spring-context-3.2.xsd</span><span style="color: #008000;">"&gt;</span>
+
+    &lt;!-- 3.配置数据源 ，使用的alibba的数据库--&gt;
+    &lt;bean id="dataSource" <span style="color: #0000ff;">class</span>="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"&gt;
+        &lt;!-- 基本属性 url、user、password --&gt;
+        &lt;property name="driverClassName" value="${jdbc_driverClassName}"/&gt;
+        &lt;property name="url" value="${jdbc_url}"/&gt;
+        &lt;property name="username" value="${jdbc_username}"/&gt;
+        &lt;property name="password" value="${jdbc_password}"/&gt;
+
+        &lt;!-- 配置初始化大小、最小、最大 --&gt;
+        &lt;property name="initialSize" value="10"/&gt;
+        &lt;property name="minIdle" value="10"/&gt;
+        &lt;property name="maxActive" value="50"/&gt;
+
+        &lt;!-- 配置获取连接等待超时的时间 --&gt;
+        &lt;property name="maxWait" value="60000"/&gt;
+        &lt;!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 --&gt;
+        &lt;property name="timeBetweenEvictionRunsMillis" value="60000" /&gt;
+
+        &lt;!-- 配置一个连接在池中最小生存的时间，单位是毫秒 --&gt;
+        &lt;property name="minEvictableIdleTimeMillis" value="300000" /&gt;
+
+        &lt;property name="validationQuery" value="SELECT 'x'" /&gt;
+        &lt;property name="testWhileIdle" value="true" /&gt;
+        &lt;property name="testOnBorrow" value="false" /&gt;
+        &lt;property name="testOnReturn" value="false" /&gt;
+
+        &lt;!-- 打开PSCache，并且指定每个连接上PSCache的大小  如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。--&gt;
+        &lt;property name="poolPreparedStatements" value="false" /&gt;
+        &lt;property name="maxPoolPreparedStatementPerConnectionSize" value="20" /&gt;
+
+        &lt;!-- 配置监控统计拦截的filters --&gt;
+        &lt;property name="filters" value="wall,stat" /&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 --&gt;
+    &lt;bean id="sqlSessionFactory" <span style="color: #0000ff;">class</span>="org.mybatis.spring.SqlSessionFactoryBean"&gt;
+        &lt;property name="dataSource" ref="dataSource" /&gt;
+        &lt;!-- 自动扫描mapping.xml文件 --&gt;
+        &lt;property name="mapperLocations" value="classpath:/mapper/*.xml"&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+
+    &lt;!-- DAO接口所在包名，Spring会自动查找其下的类 ,自动扫描了所有的XxxxMapper.xml对应的mapper接口文件,只要Mapper接口类和Mapper映射文件对应起来就可以了--&gt;
+    &lt;bean <span style="color: #0000ff;">class</span>="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;
+        &lt;property name="basePackage" value="com.exp.mapper" /&gt;
+        &lt;property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- (事务管理)transaction manager, use JtaTransactionManager <span style="color: #0000ff;">for</span> global tx --&gt;
+    &lt;!-- 配置事务管理器 --&gt;
+    &lt;bean id="transactionManager"
+          <span style="color: #0000ff;">class</span>="org.springframework.jdbc.datasource.DataSourceTransactionManager"&gt;
+        &lt;property name="dataSource" ref="dataSource" /&gt;
+    &lt;/bean&gt;
+
+    &lt;!--======= 事务配置 End =================== --&gt;
+    &lt;!-- 配置基于注解的声明式事务 --&gt;
+    &lt;!-- enables scanning <span style="color: #0000ff;">for</span> @Transactional annotations --&gt;
+    &lt;tx:annotation-driven transaction-manager="transactionManager" /&gt;
+
+
+&lt;/beans&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>6.编写代码</p>
+<p>在service下新建接口UserService</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.exp.service;
+
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.exp.model.User;
+
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;
+
+</span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">interface</span><span style="color: #000000;"> UserService {
+
+    List</span>&lt;User&gt;<span style="color: #000000;"> selectAll();
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<div>&nbsp;在UserServiceImpl下新建类UserServiceImpl</div>
+<div>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre></pre>
+<pre>package com.exp.service.impl;<br><br>import com.exp.mapper.UserMapper;<br>import com.exp.model.User;<br>import com.exp.service.UserService;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.stereotype.Service;<br><br>import java.util.List;<br>@Service<br>public class UserServiceImpl implements UserService {<br><br>    @Autowired<br>    private UserMapper userMapper;<br>    @Override<br>    public List&lt;User&gt; selectAll() {<br>        List&lt;User&gt; userList = userMapper.selectAll();<br>        return userList;<br>    }<br>}</pre>
+<pre><span style="color: #0000ff;">&nbsp;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<pre>类TestController</pre>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.exp.controller;
+
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.exp.model.User;
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.exp.service.UserService;
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.springframework.beans.factory.annotation.Autowired;
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.springframework.stereotype.Controller;
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.springframework.web.bind.annotation.RequestMapping;
+
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;
+
+@Controller
+@RequestMapping(</span>"/"<span style="color: #000000;">)
+</span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> TestController {
+
+    @Autowired
+    </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> UserService userService;
+
+    @RequestMapping(</span>"/test"<span style="color: #000000;">)
+    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> String test(){
+        List</span>&lt;User&gt; userList =<span style="color: #000000;"> userService.selectAll();
+        </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (User user:userList){
+            System.out.println(user);<br>        }
+        </span><span style="color: #0000ff;">return</span> "test"<span style="color: #000000;">;
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>7.测试</p>
+<p>访问http://localhost:8080/ssm2/test</p>
+<p>在server打印如下即搭建成功</p>
+<p><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/1681041-20190527202635404-1871660016.png" alt="" width="381" height="84"></p>
+<p>&nbsp;</p>
+<pre><br><br></pre>
+</div>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+
+
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(10920993,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;ec8ba813-75df-46a0-84e8-08d6d16fd22d&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/xinyijiu/" target="_blank"><img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/xinyijiu/">Java乐享</a><br>
+            <a href="https://home.cnblogs.com/u/xinyijiu/followees/">关注 - 0</a><br>
+            <a href="https://home.cnblogs.com/u/xinyijiu/followers/">粉丝 - 2</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;ec8ba813-75df-46a0-84e8-08d6d16fd22d&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(10920993,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">3</span>
+    </div>
+    <div class="buryit" onclick="votePost(10920993,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">1</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/xinyijiu/p/10888673.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/xinyijiu/p/10888673.html" title="发布于 2019-05-19 11:51">eclipse集成maven</a>
+    <br>
+    <a href="https://www.cnblogs.com/xinyijiu/p/10908237.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/xinyijiu/p/10908237.html" title="发布于 2019-05-28 11:18">idea搭建ssh框架（超详细）</a>
+
+</div>
+</div>
+        </div>
+        <p class="postfoot">
+            posted on 
+<span id="post-date">2019-05-27 20:33</span>&nbsp;
+<a href="https://www.cnblogs.com/xinyijiu/">Java乐享</a>&nbsp;
+阅读(<span id="post_view_count">15884</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10920993" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(10920993);return false;">收藏</a>
+        </p>
+    </div>
+</div>
+
+<script src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/highlight.min.js.下载"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 514195, cb_blogApp = 'xinyijiu', cb_blogUserGuid = 'ec8ba813-75df-46a0-84e8-08d6d16fd22d';
+    var cb_entryId = 10920993, cb_entryCreatedDate = '2019-05-27 20:33', cb_postType = 1; 
+    loadViewCount(cb_entryId);
+    loadSideColumnAd();
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/xinyijiu/p/10920993.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/xinyijiu/p/10920993.html#top">返回顶部</a></div>
+    <div id="comment_form_container" style="visibility: visible;"><div class="login_tips">
+    注册用户登录后才能发表评论，请 
+    <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a>
+     或 
+    <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，
+    <a href="https://www.cnblogs.com/">访问</a> 网站首页。
+</div></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-ucancode&#39;)">【推荐】超50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="https://brands.cnblogs.com/huawei" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为专区&#39;)">【推荐】了不起的开发者，挡不住的华为，园子里的品牌专区</a><br><a href="https://developer.aliyun.com/article/769509?utm_content=g_1000163114" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云&#39;)">【推荐】《Java开发手册》测试题大闯关，看看你能走到哪一步</a><br><a href="https://ai.youdao.com/third-anniversary.s?keyfrom=cnblogs" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-网易有道&#39;)">【推荐】有道智云周年庆，API服务大放送，注册即送100元体验金！</a><br><a href="https://developer.aliyun.com/article/756998?utm_content=g_1000133217" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云开发者社区&#39;)">【推荐】免费下载 | 超全算法题精解，一本能“在线”编程的面试宝典</a><br></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="c_ad_block"><a href="https://ai.youdao.com/third-anniversary.s?keyfrom=cnblogs" target="_blank"><img width="300" height="250" src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/2016690-20200717105942214-957138008.png" alt="有道智云周年庆" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1-网易有道&#39;);"></a></div>
+    <div id="under_post_news"><div class="recomm-block"><b>相关博文：</b><br>·  <a title="idea使用maven搭建SSM项目" href="https://www.cnblogs.com/wugc/p/6588808.html" target="_blank" onclick="clickRecomItmem(6588808)">idea使用maven搭建SSM项目</a><br>·  <a title="idea搭建ssh框架（超详细）" href="https://www.cnblogs.com/xinyijiu/p/10908237.html" target="_blank" onclick="clickRecomItmem(10908237)">idea搭建ssh框架（超详细）</a><br>·  <a title="使用idea2017搭建SSM框架" href="https://www.cnblogs.com/hackyo/p/6646051.html" target="_blank" onclick="clickRecomItmem(6646051)">使用idea2017搭建SSM框架</a><br>·  <a title="SSM框架搭建最新教程（超详细）" href="https://www.cnblogs.com/aishangJava/p/10361481.html" target="_blank" onclick="clickRecomItmem(10361481)">SSM框架搭建最新教程（超详细）</a><br>·  <a title="IDEA使用Maven搭建SSM框架" href="https://www.cnblogs.com/xuyiqing/p/10522339.html" target="_blank" onclick="clickRecomItmem(10522339)">IDEA使用Maven搭建SSM框架</a><br>»  <a target="_blank" href="https://recomm.cnblogs.com/blogpost/10920993">更多推荐...</a></div></div>
+    <div id="cnblogs_c2" class="c_ad_block" style="display: none;">
+        <div id="div-gpt-ad-1592366332455-0" style="width: 468px; height: 60px;"></div>
+    </div>
+    <div id="under_post_kb">
+<div class="itnews c_ad_block">
+    <b>最新 IT 新闻</b>:
+    <br>
+ ·              <a href="https://news.cnblogs.com/n/668636/" target="_blank">蔚来决定“砍”电池两刀</a>
+            <br>
+ ·              <a href="https://news.cnblogs.com/n/668635/" target="_blank">百度「阿波罗计算单元」自驾平台已经准备好要量产了</a>
+            <br>
+ ·              <a href="https://news.cnblogs.com/n/668634/" target="_blank">鼠标发明者William English离世，终年 91 岁</a>
+            <br>
+ ·              <a href="https://news.cnblogs.com/n/668633/" target="_blank">微信：正在灰度测试将视频号接入“搜一搜”</a>
+            <br>
+ ·              <a href="https://news.cnblogs.com/n/668632/" target="_blank">vivo 手机拍的短片登上电影节，这代表了什么？</a>
+            <br>
+    » <a href="https://news.cnblogs.com/" title="IT 新闻" target="_blank">更多新闻...</a>
+</div></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+        deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverT2();
+        deliverC1C2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+</div>
+<div id="leftmenu">
+
+
+<h3>导航</h3>
+<ul>
+    <li>
+        <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/xinyijiu/">
+首页</a>
+
+    </li>
+    <li>
+        
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+
+    </li>
+    <li>
+        
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/Java%E4%B9%90%E4%BA%AB">
+联系</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/xinyijiu/rss/">
+订阅</a>
+        
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/xinyijiu/rss/">
+    <img src="./idea搭建ssm框架（超详细） - Java乐享 - 博客园_files/xml.gif" alt="订阅">
+</a>
+    </li>
+    <li>
+        
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+    </li>
+</ul>
+
+
+<div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2020/07/04&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2020年8月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2020/09/04&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">26</td>
+                            <td class="CalOtherMonthDay" align="center">27</td>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                            <td class="CalOtherMonthDay" align="center">29</td>
+                            <td class="CalOtherMonthDay" align="center">30</td>
+                            <td class="CalOtherMonthDay" align="center">31</td>
+                    <td class="CalWeekendDay" align="center">
+                        1
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            2
+                        </td>
+                            <td class="" align="center">
+                                3
+                            </td>
+                            <td class="CalTodayDay" align="center">
+                                4
+                            </td>
+                            <td class="" align="center">
+                                5
+                            </td>
+                            <td class="" align="center">
+                                6
+                            </td>
+                            <td class="" align="center">
+                                7
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            8
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            9
+                        </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                            <td class="" align="center">
+                                11
+                            </td>
+                            <td class="" align="center">
+                                12
+                            </td>
+                            <td class="" align="center">
+                                13
+                            </td>
+                            <td class="" align="center">
+                                14
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            15
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            16
+                        </td>
+                            <td class="" align="center">
+                                17
+                            </td>
+                            <td class="" align="center">
+                                18
+                            </td>
+                            <td class="" align="center">
+                                19
+                            </td>
+                            <td class="" align="center">
+                                20
+                            </td>
+                            <td class="" align="center">
+                                21
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            22
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            23
+                        </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                            <td class="" align="center">
+                                25
+                            </td>
+                            <td class="" align="center">
+                                26
+                            </td>
+                            <td class="" align="center">
+                                27
+                            </td>
+                            <td class="" align="center">
+                                28
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            29
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            30
+                        </td>
+                            <td class="" align="center">
+                                31
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                2
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                3
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                4
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            5
+                        </td>
+                </tr>
+    </tbody>
+</table></div><script>loadBlogDefaultCalendar();</script>
+
+<div id="sidebar_news" class="newsItem"><meta name="vs_showGrid" content="False">
+<h3>公告</h3>
+
+<div id="blog-news">
+    
+    <div id="profile_block">
+        昵称：
+        <a href="https://home.cnblogs.com/u/xinyijiu/">
+            Java乐享
+        </a>
+        <br>
+        园龄：
+        <a href="https://home.cnblogs.com/u/xinyijiu/" title="入园时间：2019-05-07">
+            1年2个月
+        </a>
+        <br>
+        粉丝：
+        <a href="https://home.cnblogs.com/u/xinyijiu/followers/">
+            2
+        </a>
+        <br>
+        关注：
+        <a href="https://home.cnblogs.com/u/xinyijiu/followees/">
+            0
+        </a>
+        <div id="p_b_follow">
+<a href="javascript:void(0)" onclick="follow(&#39;ec8ba813-75df-46a0-84e8-08d6d16fd22d&#39;)">+加关注</a></div>
+        <script>getFollowStatus('ec8ba813-75df-46a0-84e8-08d6d16fd22d');</script>
+    </div>
+</div>
+
+</div>
+
+<div id="sidebar_ad"></div>
+<div id="blog-sidecolumn">
+<!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div id="sidebar_search" class="mySearch">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            <div id="widget_my_google" class="div_my_zzk">
+                <input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block">
+    
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    
+<li><a href="https://www.cnblogs.com/xinyijiu/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/xinyijiu/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/xinyijiu/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/xinyijiu/RecentComments.html" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/xinyijiu/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+
+</div>
+
+<!-- 最新随笔 -->
+
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block">
+    
+</div>
+
+<!-- 积分与排名 -->
+
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+    
+		<h3>
+
+随笔档案
+
+
+</h3>
+				<ul>
+			
+				<li>
+<a href="https://www.cnblogs.com/xinyijiu/archive/2019/06.html" rel="" target="">
+    2019年6月(2)
+</a>
+
+</li>
+				<li>
+<a href="https://www.cnblogs.com/xinyijiu/archive/2019/05.html" rel="" target="">
+    2019年5月(4)
+</a>
+
+</li>
+			
+				</ul>
+
+
+</div>
+
+<!-- 最新评论 -->
+<div id="sidebar_recentcomments" class="sidebar-block">
+    <div id="recent_comments_wrap" class="RecentComment">
+    <h3 class="catListTitle">最新评论</h3>
+    <div class="RecentCommentBlock">
+        <ul>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/xinyijiu/p/10908237.html">1. Re:idea搭建ssh框架（超详细）</a></li>
+                    <li class="recent_comment_body">@小宇宙zxy 应该是在某一环节自动生成了...</li>
+                    <li class="recent_comment_author">--Ethan-yu</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/xinyijiu/p/10908237.html">2. Re:idea搭建ssh框架（超详细）</a></li>
+                    <li class="recent_comment_body"><p>maven 不能自动下载Spring 的包哎。 可以换更高版本的嘛？</p>
+</li>
+                    <li class="recent_comment_author">--Ethan-yu</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/xinyijiu/p/10908237.html">3. Re:idea搭建ssh框架（超详细）</a></li>
+                    <li class="recent_comment_body">是不是缺少一个UserEntity类</li>
+                    <li class="recent_comment_author">--小宇宙zxy</li>
+        </ul>
+    </div>
+</div>
+</div>
+
+
+
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block">
+    
+<div id="topview_posts_wrap">
+    <h3 class="catListTitle">阅读排行榜</h3>
+    <div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/xinyijiu/p/10920993.html">
+                            1. idea搭建ssm框架（超详细）(15884)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/xinyijiu/p/10833748.html">
+                            2. win10java环境变量配置(11253)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/xinyijiu/p/10908237.html">
+                            3. idea搭建ssh框架（超详细）(10922)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/xinyijiu/p/10969690.html">
+                            4. POI实现excel的导入导出(3704)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/xinyijiu/p/10966725.html">
+                            5. win10家庭版安装Docker(2147)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block">
+    
+<div id="topfeedback_posts_wrap">
+    <h3 class="catListTitle">评论排行榜</h3>
+    <div id="TopFeedbackPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/xinyijiu/p/10908237.html">
+                            1. idea搭建ssh框架（超详细）(3)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+    
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">推荐排行榜</h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/xinyijiu/p/10920993.html">
+                                1. idea搭建ssm框架（超详细）(3)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/xinyijiu/p/10833748.html">
+                                2. win10java环境变量配置(1)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div></div>
+                    <script>loadBlogSideColumn();</script>
+
+</div>
+</div>
+<div class="clear"></div>
+<div id="footer">
+<p id="footer">
+	Powered by: 
+	<br>
+	
+	<a href="https://www.cnblogs.com/" id="footer_site_link">博客园</a>
+	<br>
+	Copyright © 2020 Java乐享
+<br><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+</p>
+
+
+</div>
+</div>
+
+
+    
+
+
+</body></html>
